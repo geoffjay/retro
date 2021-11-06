@@ -14,7 +14,7 @@ import {
 
 import {
   auth,
-  signInWithEmailAndPassword,
+  signInWithEmail,
   signInWithGoogle,
 } from "../../firebase";
 
@@ -61,7 +61,7 @@ const Login = () => {
             <Button
               width="full"
               mt={4}
-              onClick={() => signInWithEmailAndPassword(email, password)}
+              onClick={() => signInWithEmail(email, password)}
             >
               Sign In
             </Button>

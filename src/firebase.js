@@ -56,7 +56,7 @@ const signInWithGoogle = async () => {
   }
 };
 
-const signInWithEmailAndPassword = async (email, password) => {
+const signInWithEmail = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
   } catch (error) {
@@ -95,7 +95,7 @@ export {
   auth,
   db,
   signInWithGoogle,
-  signInWithEmailAndPassword,
+  signInWithEmail,
   registerWithEmailAndPassword,
   sendPasswordResetEmail,
   logout,
