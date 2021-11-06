@@ -8,10 +8,12 @@ import {
   FormControl,
   FormLabel,
   Heading,
+  Icon,
   Input,
   Link,
   Stack,
 } from "@chakra-ui/react";
+import { FaGoogle } from "react-icons/fa";
 
 import { auth, signInWithEmail, signInWithGoogle } from "../../firebase";
 
@@ -33,9 +35,9 @@ const Login = () => {
 
   return (
     <Flex width="full" align="center" justifyContent="center" minH="100vh">
-      <Box p={2}>
-        <Box textAlign="center">
-          <Heading>Login</Heading>
+      <Box p={2} color="gray.500">
+        <Box textAlign="center" p={6}>
+          <Heading>Retro Login</Heading>
         </Box>
         <Box my={4} textAlign="left">
           <form>
@@ -68,6 +70,7 @@ const Login = () => {
               width="full"
               mt={4}
               onClick={signInWithGoogle}
+              leftIcon={<FaGoogle />}
             >
               Login with Google
             </Button>
