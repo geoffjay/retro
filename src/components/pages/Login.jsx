@@ -61,7 +61,6 @@ const Login = () => {
             <Button
               width="full"
               mt={4}
-              type="submit"
               onClick={() => signInWithEmailAndPassword(email, password)}
             >
               Sign In
@@ -71,7 +70,6 @@ const Login = () => {
               variant="solid"
               width="full"
               mt={4}
-              type="submit"
               onClick={signInWithGoogle}
             >
               Login with Google

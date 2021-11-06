@@ -1,7 +1,11 @@
-node_modules
-.parcel-cache
-dist
-/.pnp
 .pnp.js
 .DS_Store
 .vercel
+.parcel-cache
+.pnp
+
+/node_modules/
+/dist/
+
+.env
+.env.*local

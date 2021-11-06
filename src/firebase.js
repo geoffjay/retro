@@ -13,12 +13,12 @@ import {
 } from "firebase/firestore/lite";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB7HTz6Xvy6_r5VycV4EgyGZRnTRK5BVLU",
-  authDomain: "retro-149f2.firebaseapp.com",
-  projectId: "retro-149f2",
-  storageBucket: "retro-149f2.appspot.com",
-  messagingSenderId: "145847648734",
-  appId: "1:145847648734:web:7b88defc569237bb76dd4f",
+  apiKey: process.env.FIREBASE_API_KEY,
+  appId: process.env.FIREBASE_APP_ID,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  projectId: process.env.FIREBASE_PROECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
 };
 
 const app = initializeApp(firebaseConfig);
