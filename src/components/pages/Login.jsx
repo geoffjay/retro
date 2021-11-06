@@ -10,13 +10,10 @@ import {
   Heading,
   Input,
   Link,
+  Stack,
 } from "@chakra-ui/react";
 
-import {
-  auth,
-  signInWithEmail,
-  signInWithGoogle,
-} from "../../firebase";
+import { auth, signInWithEmail, signInWithGoogle } from "../../firebase";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -35,7 +32,7 @@ const Login = () => {
   }, [user, loading]);
 
   return (
-    <Flex width="full" align="center" justifyContent="center">
+    <Flex width="full" align="center" justifyContent="center" minH="100vh">
       <Box p={2}>
         <Box textAlign="center">
           <Heading>Login</Heading>
@@ -75,12 +72,14 @@ const Login = () => {
               Login with Google
             </Button>
           </form>
-          <Link as={ReactLink} to="/reset">
-            Forgot password?
-          </Link>
-          <Link as={ReactLink} to="/register">
-            Register
-          </Link>
+          <Stack p={4} align="center">
+            <Link as={ReactLink} to="/reset">
+              Forgot password?
+            </Link>
+            <Link as={ReactLink} to="/register">
+              Register
+            </Link>
+          </Stack>
         </Box>
       </Box>
     </Flex>
