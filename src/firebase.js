@@ -8,9 +8,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import {
-  getFirestore /*, collection, getDocs */,
-} from "firebase/firestore/lite";
+import { getFirestore /*, collection, getDocs */ } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -20,6 +18,8 @@ const firebaseConfig = {
   projectId: process.env.FIREBASE_PROECT_ID,
   storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
 };
+
+// TODO: move these into the redux store as actions in an auth slice
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -38,6 +38,9 @@ const signInWithGoogle = async () => {
   try {
     const result = await signInWithPopup(auth, googleProvider);
     const user = result.user;
+
+    localStorage.setItem("token", user.getIdToken);
+
     // add the user if they aren't found in the database
     const query = await db
       .collection("users")

@@ -18,7 +18,7 @@ import {
 import { FaCheckCircle, FaTemperatureHigh } from "react-icons/fa";
 
 const Temperature = () => {
-  const [temp, setTemp] = useState(5.0);
+  const [temp, setTemp] = useState(5);
   const [comments, setComments] = useState("");
 
   const handleTempChange = value => {

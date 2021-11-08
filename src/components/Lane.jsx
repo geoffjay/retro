@@ -11,7 +11,7 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 
-const Lane = ({ title, ...props }) => {
+const Lane = ({ title, items, ...props }) => {
   const [item, setItem] = useState("");
   const [itemOptions, setItemOptions] = useState([false, false]);
 
@@ -25,75 +25,98 @@ const Lane = ({ title, ...props }) => {
     setItemOptions([false, false]);
   };
 
+  console.log(items);
+
   return (
-    <Box
-      height="full"
-      width="full"
-      boxShadow="lg"
-      align="left"
-      p={4}
-      {...props}
-    >
-      <Flex direction="column" height="full">
-        <Heading size="sm" color="gray.600" pb={4}>
-          {title}
-        </Heading>
-        <Stack flex="1" spacing={2}>
-          <Box height="4em" bg="white" boxShadow="md" />
-          <Box height="4em" bg="white" boxShadow="md" />
-          <Box height="4em" bg="white" boxShadow="md" />
-          <Box height="4em" bg="white" boxShadow="md" />
-        </Stack>
-        <Box height="144px" bg="white" boxShadow="md" p={2}>
-          <Stack direction="column" spacing={2}>
-            <Textarea
-              value={item}
-              onChange={handleItemChange}
-              placeholder="Enter item description"
-              size="sm"
-              bg="white"
-              focusBorderColor="gray.300"
-              resize="none"
-            />
-            <Box width="full" color="gray.500" pl={2}>
-              <Flex width="full">
-                <Checkbox
-                  size="sm"
-                  iconColor="gray.500"
-                  iconSize="1rem"
-                  pr={4}
-                  isChecked={itemOptions[0]}
-                  onChange={e =>
-                    setItemOptions([e.target.checked, itemOptions[1]])
-                  }
+    items && (
+      <Box
+        height="full"
+        width="full"
+        boxShadow="lg"
+        align="left"
+        borderWidth={1}
+        borderRadius={4}
+        p={4}
+        {...props}
+      >
+        <Flex direction="column" height="full">
+          <Heading size="sm" color="gray.600" pb={4}>
+            {title}
+          </Heading>
+          <Stack flex="1" spacing={2} color="gray.500">
+            {items.map(item => {
+              return (
+                <Box
+                  height="4em"
+                  bg="white"
+                  boxShadow="md"
+                  borderWidth={1}
+                  borderRadius={4}
+                  p={2}
                 >
-                  Private
-                </Checkbox>
-                <Checkbox
-                  size="sm"
-                  iconColor="gray.500"
-                  iconSize="1rem"
-                  isChecked={itemOptions[1]}
-                  onChange={e =>
-                    setItemOptions([itemOptions[0], e.target.checked])
-                  }
-                >
-                  Anonymous
-                </Checkbox>
-                <Spacer />
-                <IconButton
-                  aria-label="Submit retro item"
-                  icon={<FaPlusCircle />}
-                  color="gray.500"
-                  fontSize="20px"
-                  onClick={handleItemSubmit}
-                />
-              </Flex>
-            </Box>
+                  {item.description}
+                </Box>
+              );
+            })}
           </Stack>
-        </Box>
-      </Flex>
-    </Box>
+          <Box
+            height="144px"
+            bg="white"
+            boxShadow="md"
+            p={2}
+            borderWidth={1}
+            borderRadius={4}
+          >
+            <Stack direction="column" spacing={2}>
+              <Textarea
+                value={item}
+                onChange={handleItemChange}
+                placeholder="Enter item description"
+                size="sm"
+                bg="white"
+                focusBorderColor="gray.300"
+                resize="none"
+              />
+              <Box width="full" color="gray.500" pl={2}>
+                <Flex width="full">
+                  <Checkbox
+                    size="sm"
+                    iconColor="gray.500"
+                    iconSize="1rem"
+                    pr={4}
+                    isChecked={itemOptions[0]}
+                    onChange={e =>
+                      setItemOptions([e.target.checked, itemOptions[1]])
+                    }
+                  >
+                    Private
+                  </Checkbox>
+                  <Checkbox
+                    size="sm"
+                    iconColor="gray.500"
+                    iconSize="1rem"
+                    isChecked={itemOptions[1]}
+                    onChange={e =>
+                      setItemOptions([itemOptions[0], e.target.checked])
+                    }
+                  >
+                    Anonymous
+                  </Checkbox>
+                  <Spacer />
+                  <IconButton
+                    aria-label="Submit retro item"
+                    icon={<FaPlusCircle />}
+                    color="gray.500"
+                    fontSize="20px"
+                    onClick={handleItemSubmit}
+                  />
+                </Flex>
+              </Box>
+            </Stack>
+          </Box>
+        </Flex>
+      </Box>
+    )
   );
 };
 

@@ -34,13 +34,20 @@ const Login = () => {
 
   return (
     <Flex width="full" align="center" justifyContent="center" minH="100vh">
-      <Box p={2} color="gray.500">
+      <Box
+        p={8}
+        maxWidth="500px"
+        color="gray.500"
+        borderWidth={1}
+        borderRadius={8}
+        boxShadow="lg"
+      >
         <Box textAlign="center" p={6}>
           <Heading>Retro Login</Heading>
         </Box>
         <Box my={4} textAlign="left">
           <form>
-            <FormControl>
+            <FormControl isRequired>
               <FormLabel>Email</FormLabel>
               <Input
                 type="email"
@@ -48,7 +55,7 @@ const Login = () => {
                 onChange={e => setEmail(e.target.value)}
               />
             </FormControl>
-            <FormControl mt={6}>
+            <FormControl mt={6} isRequired>
               <FormLabel>Password</FormLabel>
               <Input
                 type="password"
