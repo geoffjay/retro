@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Grid, Stack } from "@chakra-ui/react";
 
-import { auth } from "../../firebase";
+import { auth } from "@/lib/firebase";
 
 import { Header, Retro, Temperature } from "@/components";
 

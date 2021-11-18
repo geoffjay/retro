@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { FaGoogle } from "react-icons/fa";
 
-import { auth, signInWithEmail, signInWithGoogle } from "../../firebase";
+import { auth, signInWithEmail, signInWithGoogle } from "@/lib/firebase";
 
 const Login = () => {
   const [email, setEmail] = useState("");

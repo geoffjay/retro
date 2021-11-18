@@ -6,13 +6,17 @@
   "scripts": {
     "start": "parcel",
     "build": "parcel build --dist-dir public",
-    "lint:js": "eslint .",
-    "fmt:prettier": "prettier --write ."
+    "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore .",
+    "fmt:check": "prettier --list-different .",
+    "fmt:prettier": "prettier --ignore-path .gitignore --write .",
+    "ts:check": "tsc --project tsconfig.json --pretty --noEmit"
   },
   "alias": {
-    "@/api": "./src/api",
     "@/components": "./src/components",
-    "@/features": "./src/features"
+    "@/features": "./src/features",
+    "@/lib": "./src/lib",
+    "@/types": "./src/types",
+    "@/utils": "./src/utils"
   },
   "dependencies": {
     "@apollo/react-hooks": "^4.0.0",
@@ -35,17 +39,43 @@
     "react-icons": "^4.3.1",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.0.0",
-    "subscriptions-transport-ws": "^0.11.0"
+    "subscriptions-transport-ws": "^0.11.0",
+    "typescript": "^4.5.2"
   },
   "devDependencies": {
     "@parcel/transformer-graphql": "^2.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
     "eslint": "^8.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jest-dom": "^3.9.2",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-testing-library": "^5.0.0",
     "parcel": "^2.0.0",
     "parcel-plugin-at-alias": "^0.2.0",
     "prettier": "^2.4.1"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
+  },
+  "lint-staged": {
+    "*.+(ts|tsx)": [
+      "yarn lint"
+    ]
   }
 }

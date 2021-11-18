@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { ChakraProvider, theme } from "@chakra-ui/react";
 
-import graphqlClient from "@/api/graphql";
+import client from "@/lib/graphql";
 
 import { Home, Login, Register } from "@/components/pages";
 
@@ -12,7 +12,7 @@ import { Home, Login, Register } from "@/components/pages";
 export function App() {
   return (
     <ChakraProvider theme={theme}>
-      <ApolloProvider client={graphqlClient}>
+      <ApolloProvider client={client}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />

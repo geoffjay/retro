@@ -1,6 +1,6 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 
-import retroReducer from "../features/retros/retroSlice";
+import retroReducer from "@/features/retros/retroSlice";
 
 export default configureStore({
   reducer: {

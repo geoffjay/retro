@@ -3,12 +3,15 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   GoogleAuthProvider,
+  onAuthStateChanged,
   sendPasswordResetEmail,
   signInWithPopup,
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { getFirestore /*, collection, getDocs */ } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
+
+import storage from "@/utils/storage";
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -26,20 +29,20 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
-// XXX: example function
-// async function getUsers(db) {
-//   const usersCol = collection(db, "users");
-//   const userSnapshot = await getDocs(usersCol);
-//   const userList = userSnapshot.docs.map(doc => doc.data());
-//   return userList;
-// };
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    user.getIdToken(true).then((token) => {
+      storage.setToken(token);
+    });
+  } else {
+    storage.clearToken();
+  }
+});
 
 const signInWithGoogle = async () => {
   try {
     const result = await signInWithPopup(auth, googleProvider);
     const user = result.user;
-
-    localStorage.setItem("token", user.getIdToken);
 
     // add the user if they aren't found in the database
     const query = await db.collection("users").where("uid", "==", user.uid).get();

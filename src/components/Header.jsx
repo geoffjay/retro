@@ -14,9 +14,9 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
-import { auth, logout } from "../firebase";
+import { auth, logout } from "@/lib/firebase";
 
-import getUsers from "@/api/graphql/get-users-query.gql";
+import getUsers from "@/lib/graphql/get-users-query.gql";
 
 const Header = (props) => {
   const [user, loading, _] = useAuthState(auth);

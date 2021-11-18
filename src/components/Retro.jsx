@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Stack } from "@chakra-ui/react";
 
-import { fetchAllRetros } from "../features/retros/actions";
+import { fetchAllRetros } from "@/features/retros/actions";
 
 import { Lane } from "@/components";
 
