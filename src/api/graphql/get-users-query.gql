@@ -1,0 +1,13 @@
+query GetUsers {
+  users_connection(first: 10) {
+    edges {
+      cursor
+      node {
+        email
+      }
+    }
+    pageInfo {
+      hasNextPage
+    }
+  }
+}

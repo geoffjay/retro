@@ -13,7 +13,7 @@ export const retroSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [fetchAllRetros.pending]: state => {
+    [fetchAllRetros.pending]: (state) => {
       state.status = "loading";
     },
     [fetchAllRetros.fulfilled]: (state, action) => {
@@ -30,7 +30,7 @@ export const retroSlice = createSlice({
 // these would come from the reducers {} here
 export const {} = retroSlice.actions;
 
-export const selectRetros = state => state.retros;
+export const selectRetros = (state) => state.retros;
 // export const selectRetroById = (state, id) => {
 //   console.log(state);
 //   return state.retro.retros.filter(retro => retro.id === id);

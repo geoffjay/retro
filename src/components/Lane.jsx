@@ -15,7 +15,7 @@ const Lane = ({ title, items, ...props }) => {
   const [item, setItem] = useState("");
   const [itemOptions, setItemOptions] = useState([false, false]);
 
-  const handleItemChange = e => {
+  const handleItemChange = (e) => {
     const itemValue = e.target.value;
     setItem(itemValue);
   };
@@ -44,29 +44,15 @@ const Lane = ({ title, items, ...props }) => {
             {title}
           </Heading>
           <Stack flex="1" spacing={2} color="gray.500">
-            {items.map(item => {
+            {items.map((item) => {
               return (
-                <Box
-                  height="4em"
-                  bg="white"
-                  boxShadow="md"
-                  borderWidth={1}
-                  borderRadius={4}
-                  p={2}
-                >
+                <Box height="4em" bg="white" boxShadow="md" borderWidth={1} borderRadius={4} p={2}>
                   {item.description}
                 </Box>
               );
             })}
           </Stack>
-          <Box
-            height="144px"
-            bg="white"
-            boxShadow="md"
-            p={2}
-            borderWidth={1}
-            borderRadius={4}
-          >
+          <Box height="144px" bg="white" boxShadow="md" p={2} borderWidth={1} borderRadius={4}>
             <Stack direction="column" spacing={2}>
               <Textarea
                 value={item}
@@ -85,9 +71,7 @@ const Lane = ({ title, items, ...props }) => {
                     iconSize="1rem"
                     pr={4}
                     isChecked={itemOptions[0]}
-                    onChange={e =>
-                      setItemOptions([e.target.checked, itemOptions[1]])
-                    }
+                    onChange={(e) => setItemOptions([e.target.checked, itemOptions[1]])}
                   >
                     Private
                   </Checkbox>
@@ -96,9 +80,7 @@ const Lane = ({ title, items, ...props }) => {
                     iconColor="gray.500"
                     iconSize="1rem"
                     isChecked={itemOptions[1]}
-                    onChange={e =>
-                      setItemOptions([itemOptions[0], e.target.checked])
-                    }
+                    onChange={(e) => setItemOptions([itemOptions[0], e.target.checked])}
                   >
                     Anonymous
                   </Checkbox>

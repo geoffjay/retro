@@ -5,7 +5,7 @@ import { Grid, Stack } from "@chakra-ui/react";
 
 import { auth } from "../../firebase";
 
-import { Header, Retro, Temperature } from "@components";
+import { Header, Retro, Temperature } from "@/components";
 
 const Home = () => {
   const [user, loading, _error] = useAuthState(auth);

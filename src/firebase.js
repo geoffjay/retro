@@ -42,10 +42,7 @@ const signInWithGoogle = async () => {
     localStorage.setItem("token", user.getIdToken);
 
     // add the user if they aren't found in the database
-    const query = await db
-      .collection("users")
-      .where("uid", "==", user.uid)
-      .get();
+    const query = await db.collection("users").where("uid", "==", user.uid).get();
     if (query.docs.length === 0) {
       await db.collection("users").add({
         uid: user.uid,
@@ -82,7 +79,7 @@ const registerWithEmail = async (name, email, password) => {
   }
 };
 
-const sendPasswordReset = async email => {
+const sendPasswordReset = async (email) => {
   try {
     await sendPasswordResetEmail(auth, email);
   } catch (error) {

@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useQuery } from "@apollo/react-hooks";
+import gql from "graphql-tag";
 import {
   Avatar,
   Box,
@@ -14,16 +16,25 @@ import {
 
 import { auth, logout } from "../firebase";
 
-const Header = props => {
+import getUsers from "@/api/graphql/get-users-query.gql";
+
+const Header = (props) => {
   const [user, loading, _] = useAuthState(auth);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const handleToggle = () => (isOpen ? onClose() : onOpen());
+
+  const { data } = useQuery(gql(getUsers), {
+    fetchPolicy: "cache-and-network",
+  });
 
   useEffect(() => {
     if (loading) {
       return;
     }
-  }, [loading]);
+    if (data) {
+      console.log(data);
+    }
+  }, [loading, data]);
 
   return (
     user && (

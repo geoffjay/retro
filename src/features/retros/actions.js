@@ -8,7 +8,7 @@ export const fetchAllRetros = createAsyncThunk("retro/fetchAll", async () => {
   try {
     // .where("owner", "==", user.email)
     const querySnapshot = await getDocs(collection(db, "retros"));
-    querySnapshot.forEach(doc => {
+    querySnapshot.forEach((doc) => {
       retros.push(doc.data());
     });
   } catch (error) {

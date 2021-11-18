@@ -21,7 +21,7 @@ const Temperature = () => {
   const [temp, setTemp] = useState(5);
   const [comments, setComments] = useState("");
 
-  const handleTempChange = value => {
+  const handleTempChange = (value) => {
     setTemp(value);
   };
 
@@ -30,13 +30,7 @@ const Temperature = () => {
   };
 
   return (
-    <Flex
-      height="full"
-      align="center"
-      justifyContent="center"
-      p={200}
-      color="gray.500"
-    >
+    <Flex height="full" align="center" justifyContent="center" p={200} color="gray.500">
       <Stack
         direction="column"
         width="full"
@@ -47,12 +41,7 @@ const Temperature = () => {
         spacing={5}
       >
         <Stack direction="row" width="full" align="center" spacing={4} pb={5}>
-          <Icon
-            as={FaTemperatureHigh}
-            width={10}
-            height={10}
-            color="orange.200"
-          />
+          <Icon as={FaTemperatureHigh} width={10} height={10} color="orange.200" />
           <Heading size="md">Temperature Check</Heading>
         </Stack>
         <Slider
@@ -62,7 +51,7 @@ const Temperature = () => {
           min={0}
           max={10}
           step={0.5}
-          onChange={value => handleTempChange(value)}
+          onChange={(value) => handleTempChange(value)}
         >
           <SliderTrack>
             <SliderFilledTrack />
@@ -77,7 +66,7 @@ const Temperature = () => {
               type="text"
               placeholder="This sprint I felt..."
               value={comments}
-              onChange={e => setComments(e.target.value)}
+              onChange={(e) => setComments(e.target.value)}
             />
           </FormControl>
         </>

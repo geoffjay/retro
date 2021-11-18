@@ -34,14 +34,7 @@ const Login = () => {
 
   return (
     <Flex width="full" align="center" justifyContent="center" minH="100vh">
-      <Box
-        p={8}
-        maxWidth="500px"
-        color="gray.500"
-        borderWidth={1}
-        borderRadius={8}
-        boxShadow="lg"
-      >
+      <Box p={8} maxWidth="500px" color="gray.500" borderWidth={1} borderRadius={8} boxShadow="lg">
         <Box textAlign="center" p={6}>
           <Heading>Retro Login</Heading>
         </Box>
@@ -52,7 +45,7 @@ const Login = () => {
               <Input
                 type="email"
                 placeholder="test@test.com"
-                onChange={e => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </FormControl>
             <FormControl mt={6} isRequired>
@@ -60,14 +53,10 @@ const Login = () => {
               <Input
                 type="password"
                 placeholder="*******"
-                onChange={e => setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </FormControl>
-            <Button
-              width="full"
-              mt={4}
-              onClick={() => signInWithEmail(email, password)}
-            >
+            <Button width="full" mt={4} onClick={() => signInWithEmail(email, password)}>
               Sign In
             </Button>
             <Button
