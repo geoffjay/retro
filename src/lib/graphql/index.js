@@ -1,9 +1,6 @@
-import ApolloClient from "apollo-client";
-import { HttpLink } from "apollo-link-http";
-import { WebSocketLink } from "apollo-link-ws";
-import { split } from "apollo-link";
-import { getMainDefinition } from "apollo-utilities";
-import { InMemoryCache } from "apollo-cache-inmemory";
+import { ApolloClient, HttpLink, InMemoryCache, split } from "@apollo/client";
+import { getMainDefinition } from "@apollo/client/utilities";
+import { WebSocketLink } from "@apollo/client/link/ws";
 
 const hasuraConfig = {
   apiEndpoint: process.env.HASURA_API_ENDPOINT,
