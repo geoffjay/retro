@@ -1,0 +1,19 @@
+# sample variable input:
+#
+# {
+#   "ownerId": 1,
+#   "retroLanes": {
+#     "data": [
+#       {"title": "What went well?"},
+#       {"title": "What should we try?"},
+#       {"title": "What didn't go well?"}
+#     ]
+#   }
+# }
+
+mutation CreateRetro($ownerId: Int!, $retroLanes: retro_lanes_arr_rel_insert_input!) {
+  retro: insert_retros_one(object: { owner_id: $ownerId, retro_lanes: $retroLanes }) {
+    id
+    ownerId: owner_id
+  }
+}

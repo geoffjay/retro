@@ -44,9 +44,17 @@ const Lane = ({ title, items, ...props }) => {
             {title}
           </Heading>
           <Stack flex="1" spacing={2} color="gray.500">
-            {items.map((item) => {
+            {items.map((item, index) => {
               return (
-                <Box height="4em" bg="white" boxShadow="md" borderWidth={1} borderRadius={4} p={2}>
+                <Box
+                  key={index}
+                  height="4em"
+                  bg="white"
+                  boxShadow="md"
+                  borderWidth={1}
+                  borderRadius={4}
+                  p={2}
+                >
                   {item.description}
                 </Box>
               );

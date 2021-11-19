@@ -1,0 +1,21 @@
+query GetRetros {
+  retros: retros_connection(first: 25) {
+    edges {
+      node {
+        id
+        owner: user {
+          id
+          displayName: display_name
+          email
+        }
+        completed
+        createdAt: created_at
+        updatedAt: updated_at
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
+  }
+}

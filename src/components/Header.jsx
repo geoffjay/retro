@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { gql, useQuery } from "@apollo/client";
 import {
   Avatar,
   Box,
@@ -10,30 +9,24 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
+  Spacer,
   useDisclosure,
 } from "@chakra-ui/react";
 
 import { auth, logout } from "@/lib/firebase";
 
-import getUsers from "@/lib/graphql/get-users-query.gql";
+import { RetroUsers } from "./RetroUsers";
 
 const Header = (props) => {
   const [user, loading, _] = useAuthState(auth);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const handleToggle = () => (isOpen ? onClose() : onOpen());
 
-  const { data } = useQuery(gql(getUsers), {
-    fetchPolicy: "cache-and-network",
-  });
-
   useEffect(() => {
     if (loading) {
       return;
     }
-    if (data) {
-      console.log(data);
-    }
-  }, [loading, data]);
+  }, [loading]);
 
   return (
     user && (
@@ -53,7 +46,8 @@ const Header = (props) => {
             Retro
           </Heading>
         </Flex>
-
+        <Spacer />
+        <RetroUsers />
         <Box display="block">
           <Menu>
             <MenuButton>

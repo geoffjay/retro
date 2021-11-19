@@ -1,0 +1,44 @@
+fragment RetroItem on retro_itemsEdge {
+  node {
+    id
+    anonymous
+    private
+    description
+    user {
+      displayName: display_name
+      avatarUrl: avatar_url
+    }
+  }
+}
+
+fragment RetroItems on retro_itemsConnection {
+  edges {
+    ...RetroItem
+  }
+  pageInfo {
+    hasNextPage
+    hasPreviousPage
+  }
+}
+
+query GetRetroById($id: ID!) {
+  retro: node(id: $id) {
+    ... on retros {
+      id
+      completed
+      createdAt: created_at
+      ownerId: owner_id
+      lanes: retro_lanes_connection(first: 3) {
+        edges {
+          node {
+            id
+            title
+            items: retro_items_connection(first: 25) {
+              ...RetroItems
+            }
+          }
+        }
+      }
+    }
+  }
+}

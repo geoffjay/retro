@@ -3,11 +3,15 @@ query GetUsers {
     edges {
       cursor
       node {
+        id
         email
+        avatarUrl: avatar_url
+        displayName: display_name
       }
     }
     pageInfo {
       hasNextPage
+      hasPreviousPage
     }
   }
 }
