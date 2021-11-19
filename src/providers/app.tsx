@@ -9,7 +9,7 @@ import { Button, ChakraProvider, Flex, Heading, Spinner, theme } from "@chakra-u
 import client from "@/lib/graphql";
 import store from "@/state/store";
 
-import { Notifications } from "@/components/notifications";
+import { Notifications } from "@/components/Notifications";
 
 const ErrorFallback = () => {
   return (

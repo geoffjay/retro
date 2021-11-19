@@ -1,5 +1,7 @@
 import React from "react";
+
 import { AppProvider } from "../src/providers/app";
+
 import "../src/styles.css";
 
 export const parameters = {

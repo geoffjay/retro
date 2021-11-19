@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { collection, getDocs } from "firebase/firestore";
 
-import { db } from "@/lib/firebase";
+import { db } from "@/lib/auth";
 
 export const fetchAllRetros = createAsyncThunk("retro/fetchAll", async () => {
   var retros = [];

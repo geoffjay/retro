@@ -23,7 +23,6 @@ export const RetroUsers = () => {
 
   useEffect(() => {
     if (loading) {
-      console.log("loading users");
       return;
     }
     if (error) {

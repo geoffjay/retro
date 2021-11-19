@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link as ReactLink, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {
   Box,
@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { FaGoogle } from "react-icons/fa";
 
-import { auth, signInWithEmail, signInWithGoogle } from "@/lib/firebase";
+import { auth, signInWithEmail, signInWithGoogle } from "@/lib/auth";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -71,10 +71,10 @@ const Login = () => {
             </Button>
           </form>
           <Stack p={4} align="center">
-            <Link as={ReactLink} to="/reset">
+            <Link as={RouterLink} to="/reset">
               Forgot password?
             </Link>
-            <Link as={ReactLink} to="/register">
+            <Link as={RouterLink} to="/register">
               Register
             </Link>
           </Stack>

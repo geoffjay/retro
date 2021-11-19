@@ -13,7 +13,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
-import { auth, logout } from "@/lib/firebase";
+import { auth, logout } from "@/lib/auth";
 
 import { RetroUsers } from "./RetroUsers";
 
