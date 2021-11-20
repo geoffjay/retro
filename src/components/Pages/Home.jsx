@@ -25,9 +25,9 @@ const Home = () => {
       });
     }
     if (!user) {
-      navigate("/login");
+      navigate("/auth/login");
     }
-  }, [loading, user]);
+  }, [user, loading, error]);
 
   // TODO: control state
   const showRetroBoard = () => params.get("retro-id");

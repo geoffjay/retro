@@ -1,12 +1,9 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useState } from "react";
 import * as z from "zod";
 import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { FaGoogle } from "react-icons/fa";
 
-import { auth, signInWithEmail, signInWithGoogle } from "@/lib/auth";
-import { useNotificationStore } from "@/stores/notifications";
+import { signInWithEmail, signInWithGoogle } from "@/lib/auth";
 
 import { Form } from "@/components/Form";
 
@@ -25,26 +22,18 @@ type LoginFormProps = {
 };
 
 export const LoginForm = ({ onSuccess }: LoginFormProps) => {
-  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, loading, error] = useAuthState(auth);
-  const { addNotification } = useNotificationStore();
 
-  useEffect(() => {
-    if (loading) {
-      return;
-    }
-    if (error) {
-      addNotification({
-        type: "error",
-        title: error.message,
-      });
-    }
-    if (user) {
-      navigate("/");
-    }
-  }, [user, loading, error]);
+  const handleSignInWithEmail = (email: string, password: string, onSuccess: () => void) => {
+    signInWithEmail(email, password);
+    onSuccess();
+  };
+
+  const handleSignInWithGoogle = (onSuccess: () => void) => {
+    signInWithGoogle();
+    onSuccess();
+  };
 
   return (
     <Form<LoginValues, typeof schema>
@@ -70,7 +59,7 @@ export const LoginForm = ({ onSuccess }: LoginFormProps) => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </FormControl>
-          <Button width="full" mt={4} onClick={() => signInWithEmail(email, password)}>
+          <Button width="full" mt={4} onClick={() => handleSignInWithEmail(email, password, onSuccess)}>
             Sign In
           </Button>
           <Button
@@ -78,7 +67,7 @@ export const LoginForm = ({ onSuccess }: LoginFormProps) => {
             variant="solid"
             width="full"
             mt={4}
-            onClick={signInWithGoogle}
+            onClick={() => handleSignInWithGoogle(onSuccess)}
             leftIcon={<FaGoogle />}
           >
             Login with Google

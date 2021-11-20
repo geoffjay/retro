@@ -27,7 +27,10 @@ query GetRetroById($id: ID!) {
       id
       completed
       createdAt: created_at
-      ownerId: owner_id
+      owner {
+        displayName: display_name
+        avatarUrl: avatar_url
+      }
       lanes: retro_lanes_connection(first: 3) {
         edges {
           node {

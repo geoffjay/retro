@@ -9,15 +9,18 @@
     "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore .",
     "fmt:check": "prettier --list-different .",
     "fmt:prettier": "prettier --ignore-path .gitignore --write .",
-    "ts:check": "tsc --project tsconfig.json --pretty --noEmit",
+    "gql:schema": "gq $HASURA_API_ENDPOINT -H \"X-Hasura-Admin-Secret: $HASURA_API_TOKEN\" --introspect > schema.graphql",
+    "gql:schema:json": "gq $HASURA_API_ENDPOINT -H \"X-Hasura-Admin-Secret: $HASURA_API_TOKEN\" --introspect --format > schema.json",
     "storybook:start": "start-storybook -p 6006 -s src",
-    "storybook:build": "build-storybook -s src"
+    "storybook:build": "build-storybook -s src",
+    "ts:check": "tsc --project tsconfig.json --pretty --noEmit"
   },
   "alias": {
     "@/components": "./src/components",
     "@/features": "./src/features",
     "@/lib": "./src/lib",
     "@/providers": "./src/providers",
+    "@/routes": "./src/routes",
     "@/state": "./src/state",
     "@/stores": "./src/stores",
     "@/types": "./src/types",
@@ -54,6 +57,7 @@
     "react-router-dom": "^6.0.0",
     "subscriptions-transport-ws": "^0.11.0",
     "typescript": "^4.5.2",
+    "web-vitals": "^2.1.2",
     "zod": "^3.11.6",
     "zustand": "^3.6.5"
   },
@@ -77,6 +81,7 @@
     "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-testing-library": "^5.0.0",
+    "graphqurl": "^1.0.1",
     "parcel": "^2.0.0",
     "parcel-plugin-at-alias": "^0.2.0",
     "prettier": "^2.4.1",
