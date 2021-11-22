@@ -1,4 +1,4 @@
-import { BaseEntity } from '@/types';
+import { BaseEntity } from "@/types";
 import { User } from "@/features/users/types";
 
 export type RetroItem = {
@@ -6,7 +6,7 @@ export type RetroItem = {
   anonymous: boolean;
   private: boolean;
   description: string;
-  user: User;
+  author: User;
 } & BaseEntity;
 
 export type RetroLane = {

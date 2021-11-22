@@ -3,7 +3,7 @@ query GetRetros {
     edges {
       node {
         id
-        owner: user {
+        owner {
           id
           displayName: display_name
           email

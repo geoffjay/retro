@@ -2,7 +2,7 @@
 
 Early days. Does things, maybe.
 
-![react](./assets/react.png) ![redux](./assets/redux.png) ![firebase](./assets/firebase.png)
+![react](./assets/react.png) ![graphql](./assets/graphql.png) ![firebase](./assets/firebase.png)
 
 ## Running
 

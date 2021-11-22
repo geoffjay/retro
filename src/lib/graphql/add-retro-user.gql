@@ -1,0 +1,5 @@
+mutation AddRetroUser($retroId: Int!, $userId: Int!) {
+  retroUser:insert_retro_users_one(object: {retro_id: $retroId, user_id: $userId}) {
+    id
+  }
+}

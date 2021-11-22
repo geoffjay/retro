@@ -59,7 +59,11 @@ export const LoginForm = ({ onSuccess }: LoginFormProps) => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </FormControl>
-          <Button width="full" mt={4} onClick={() => handleSignInWithEmail(email, password, onSuccess)}>
+          <Button
+            width="full"
+            mt={4}
+            onClick={() => handleSignInWithEmail(email, password, onSuccess)}
+          >
             Sign In
           </Button>
           <Button

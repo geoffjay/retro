@@ -19,17 +19,14 @@ export const Dashboard = () => {
   const [user, loading, error] = useAuthState(auth);
   const { addNotification } = useNotificationStore();
 
-  const [createRetro] = useMutation(
-    gql(createRetroMutation),
-    {
-      onCompleted({ retro }) {
-        if (retro) {
-          storage.setRetroId(retro.id);
-          navigate(`/app/retros/${retro.id}`);
-        }
+  const [createRetro] = useMutation(gql(createRetroMutation), {
+    onCompleted({ retro }) {
+      if (retro) {
+        storage.setRetroId(retro.id);
+        navigate(`/app/retros/${retro.id}`);
       }
-    }
-  );
+    },
+  });
 
   useEffect(() => {
     if (loading) {
@@ -55,9 +52,9 @@ export const Dashboard = () => {
             { title: "What went well?" },
             { title: "What should we try next?" },
             { title: "What didn't go well?" },
-          ]
+          ],
         },
-      }
+      },
     });
   };
 
@@ -81,5 +78,5 @@ export const Dashboard = () => {
         </Box>
       </Flex>
     </ContentLayout>
-  )
+  );
 };

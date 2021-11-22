@@ -4,7 +4,8 @@ fragment RetroItem on retro_itemsEdge {
     anonymous
     private
     description
-    user {
+    author {
+      id
       displayName: display_name
       avatarUrl: avatar_url
     }

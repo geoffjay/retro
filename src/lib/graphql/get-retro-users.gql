@@ -1,0 +1,12 @@
+query GetRetroUsers($retroId: Int!) {
+  retroUsers:retro_users_connection(where: {retro_id: {_eq: $retroId}}) {
+    edges {
+      node {
+        user {
+          id
+          displayName:display_name
+        }
+      }
+    }
+  }
+}

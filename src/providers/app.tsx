@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Provider } from "react-redux";
 import { ErrorBoundary } from "react-error-boundary";
 import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter } from "react-router-dom";
@@ -7,7 +6,6 @@ import { ApolloProvider } from "@apollo/client";
 import { Button, ChakraProvider, Flex, Heading, Spinner, theme } from "@chakra-ui/react";
 
 import client from "@/lib/graphql";
-import store from "@/state/store";
 
 import { Notifications } from "@/components/Notifications";
 
@@ -37,14 +35,12 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     >
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <HelmetProvider>
-          <Provider store={store}>
-            <ChakraProvider theme={theme}>
-              <ApolloProvider client={client}>
-                <Notifications />
-                <BrowserRouter>{children}</BrowserRouter>
-              </ApolloProvider>
-            </ChakraProvider>
-          </Provider>
+          <ChakraProvider theme={theme}>
+            <ApolloProvider client={client}>
+              <Notifications />
+              <BrowserRouter>{children}</BrowserRouter>
+            </ApolloProvider>
+          </ChakraProvider>
         </HelmetProvider>
       </ErrorBoundary>
     </React.Suspense>

@@ -1,0 +1,29 @@
+mutation CreateRetroItem(
+  $authorId: Int!
+  $laneId: Int!
+  $retroId: Int!
+  $description: String!
+  $isAnonymous: Boolean
+  $isPrivate: Boolean
+) {
+  item: insert_retro_items_one(
+    object: {
+      author_id: $authorId
+      lane_id: $laneId
+      retro_id: $retroId
+      description: $description
+      anonymous: $isAnonymous
+      private: $isPrivate
+    }
+  ) {
+    id
+    anonymous
+    private
+    description
+    author {
+      id
+      displayName: display_name
+      avatarUrl: avatar_url
+    }
+  }
+}
